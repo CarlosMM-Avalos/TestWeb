@@ -1,15 +1,246 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pagina test web</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inicio — Mi Sitio</title>
+  <meta name="description" content="Página de inicio - plantilla con HTML, CSS y JS" />
+
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1320;
+      --muted:#94a3b8;
+      --accent:#06b6d4;
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      --maxw:1100px;
+      --ff: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--ff);
+      background: linear-gradient(180deg,#071024 0%, #071731 60%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:40px 20px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .container{width:100%;max-width:var(--maxw)}
+
+    header{
+      display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter: blur(6px);margin-bottom:28px;
+    }
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700}
+    .logo svg{width:26px;height:26px}
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600}
+    nav a.cta{background:var(--accent);padding:8px 12px;border-radius:10px;color:#022029}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:28px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border-radius:var(--radius)}
+    .hero .left h1{font-size:clamp(28px,4vw,44px);margin:0 0 12px}
+    .hero .left p{color:var(--muted);margin:0 0 18px}
+    .buttons{display:flex;gap:12px}
+    .btn{padding:12px 16px;border-radius:12px;border:0;font-weight:700;cursor:pointer}
+    .btn.primary{background:var(--accent);color:#022029}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px}
+    .stats{display:flex;gap:12px}
+    .stat{flex:1;padding:12px;background:var(--glass);border-radius:10px;text-align:center}
+    .stat small{display:block;color:var(--muted)}
+
+    /* Features */
+    .features{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .feature{padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.02)}
+    .feature h3{margin:8px 0 6px}
+    .feature p{color:var(--muted);margin:0}
+
+    footer{margin-top:28px;padding:18px;border-radius:12px;text-align:center;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      nav{display:none}
+      header{padding:12px}
+    }
+
+    /* Small interactive niceties */
+    .reveal{opacity:0;transform:translateY(8px);transition:all 520ms cubic-bezier(.2,.9,.3,1)}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* simple form */
+    .contact{display:flex;flex-direction:column;gap:10px}
+    .input{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    .muted{color:var(--muted);font-size:13px}
+
+  </style>
 </head>
 <body>
-    <h1 id="titulo1" onclick="">presentacion inicial de prueba para la web en netlify 2</h1>
-    <button id="boton1">enviar</button>
+  <div class="container">
 
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden>
+          <!-- simple SVG mark -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12c4-8 12-8 16 0-4 8-12 8-16 0z" fill="white" opacity="0.95"/></svg>
+        </div>
+        <div>
+          <div style="font-weight:700">Mi Sitio</div>
+          <div style="font-size:12px;color:var(--muted)">Plantilla de inicio</div>
+        </div>
+      </div>
 
-    <script src="./code.js"></script>
+      <nav aria-label="Navegación principal">
+        <a href="#features">Características</a>
+        <a href="#about">Acerca</a>
+        <a href="#contact" class="cta">Contacto</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="left">
+          <h1 class="reveal">Crea páginas web bonitas y funcionales.</h1>
+          <p class="reveal">Plantilla de inicio con HTML, CSS y JavaScript — ligera, responsiva y lista para personalizar. Incluye interacciones y animaciones sutiles.</p>
+
+          <div class="buttons reveal">
+            <button class="btn primary" id="ctaDemo">Ver demo</button>
+            <button class="btn ghost" onclick="scrollToSection('features')">Características</button>
+          </div>
+
+          <div style="margin-top:18px" class="reveal card">
+            <div class="stats">
+              <div class="stat"><strong>99+</strong><small>Proyectos</small></div>
+              <div class="stat"><strong>4.8</strong><small>Valoración</small></div>
+              <div class="stat"><strong>1k+</strong><small>Usuarios</small></div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card">
+          <h3>Demo en vivo</h3>
+          <p class="muted">Haz clic en el botón para abrir una pequeña interacción con modal y validación de formulario.</p>
+          <div style="margin-top:12px">
+            <button class="btn primary" id="openModal">Abrir modal</button>
+          </div>
+        </aside>
+      </section>
+
+      <section id="features" class="features">
+        <article class="feature reveal">
+          <h3>Diseño responsivo</h3>
+          <p>Se adapta a móviles y escritorio usando CSS moderno y un layout flexible.</p>
+        </article>
+        <article class="feature reveal">
+          <h3>Interacciones</h3>
+          <p>Micro-animaciones y controles accesibles para mejorar la experiencia de usuario.</p>
+        </article>
+        <article class="feature reveal">
+          <h3>Fácil de personalizar</h3>
+          <p>Variables CSS, estructura clara y JavaScript pequeño para añadir lógica propia.</p>
+        </article>
+      </section>
+
+      <section id="about" style="margin-top:20px" class="card reveal">
+        <h2>Acerca</h2>
+        <p class="muted">Esta plantilla es una base para comenzar a construir tu sitio. Está pensada para que puedas copiar, pegar y modificar sin dependencias externas.</p>
+      </section>
+
+      <section id="contact" style="margin-top:16px" class="card reveal">
+        <h2>Contacto</h2>
+        <form id="contactForm" class="contact" novalidate>
+          <input type="text" id="name" class="input" placeholder="Tu nombre" required />
+          <input type="email" id="email" class="input" placeholder="correo@ejemplo.com" required />
+          <textarea id="message" class="input" placeholder="Mensaje" rows="4" required></textarea>
+          <div style="display:flex;gap:10px;align-items:center">
+            <button type="submit" class="btn primary">Enviar</button>
+            <div id="formStatus" class="muted">&nbsp;</div>
+          </div>
+        </form>
+      </section>
+
+    </main>
+
+    <footer>
+      © <span id="year"></span> — Hecho con ❤️ • Plantilla mínima
+    </footer>
+
+  </div>
+
+  <!-- Modal simple -->
+  <div id="modal" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.6);z-index:60">
+    <div style="width:90%;max-width:560px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:12px;">
+      <h3>Modal de prueba</h3>
+      <p class="muted">Este modal muestra validación y un pequeño demo de interacción.</p>
+      <form id="modalForm" class="contact" onsubmit="return false">
+        <input id="modalInput" class="input" placeholder="Escribe algo" required />
+        <div style="display:flex;gap:8px;margin-top:10px">
+          <button class="btn primary" id="modalSave">Guardar</button>
+          <button class="btn ghost" id="modalClose">Cerrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Pequeñas utilidades y lógica
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function scrollToSection(id){
+      document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});
+    }
+
+    // Reveal on scroll
+    const reveals = Array.from(document.querySelectorAll('.reveal'));
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
+      })
+    },{threshold:0.12});
+    reveals.forEach(r=>obs.observe(r));
+
+    // Modal
+    const modal = document.getElementById('modal');
+    document.getElementById('openModal').addEventListener('click',()=>modal.style.display='flex');
+    document.getElementById('modalClose').addEventListener('click',()=>modal.style.display='none');
+    document.getElementById('modalSave').addEventListener('click',()=>{
+      const v = document.getElementById('modalInput').value.trim();
+      if(!v){ alert('Escribe algo antes de guardar.'); return; }
+      alert('Guardado: '+v);
+      modal.style.display='none';
+      document.getElementById('modalInput').value='';
+    });
+
+    // CTA demo - lleva al contacto
+    document.getElementById('ctaDemo').addEventListener('click',()=>scrollToSection('contact'));
+
+    // Form simple: validación y pseudo-envío
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if(!name || !email || !message){ status.textContent='Por favor completa todos los campos.'; return; }
+      if(!/^\S+@\S+\.\S+$/.test(email)){ status.textContent='Correo inválido.'; return; }
+      status.textContent='Enviando...';
+      // simulamos envío
+      setTimeout(()=>{ status.textContent='¡Mensaje enviado! Gracias.'; form.reset(); }, 800);
+    });
+
+    // mejora: cerrar modal con esc
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') modal.style.display='none' });
+
+  </script>
 </body>
 </html>
